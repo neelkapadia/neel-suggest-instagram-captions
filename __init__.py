@@ -42,7 +42,7 @@ class SuggestSkill(MycroftSkill):
     @intent_handler(IntentBuilder('DisplayIntent').require('Suggest').require('GetCategoryContext').build())
     @adds_context('DisplayContext')
     @removes_context('GetCategoryContext')
-    def handle_display(self, message):
+    def handle_display(self, utterance):
         if "summer" in utterance:
             self.answer = open("/captions-data/summer.txt")
             self.answer = list(self.answer)
@@ -53,7 +53,7 @@ class SuggestSkill(MycroftSkill):
             self.answer = list(self.answer)
             for line in self.answer:
 	            self.speak(line + '\n')   
-	    elif "spring" in utterance:
+	elif "spring" in utterance:
             self.answer = open("/captions-data/spring.txt")
             self.answer = list(self.answer)
             for line in self.answer:
